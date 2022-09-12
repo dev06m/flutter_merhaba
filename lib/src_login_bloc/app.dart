@@ -6,6 +6,8 @@ import 'package:pics/src_login_bloc/screens/login_screen.dart';
 import 'blocs/provider.dart';
 
 class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
   Widget build(context) {
     return Provider(
       child: MaterialApp(

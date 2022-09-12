@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:pics/src_login_bloc/blocs/validators.dart';
 // import 'package:rxdart/rxdart.dart';
-// import 'package:rxdart/rxdart.dart';
 
 class Bloc extends Object with Validators {
   final _email = StreamController<String>();
@@ -22,4 +21,4 @@ class Bloc extends Object with Validators {
   }
 }
 
-// final bloc = Bloc();
+final bloc = Bloc();

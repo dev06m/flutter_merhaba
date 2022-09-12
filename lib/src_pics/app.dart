@@ -21,7 +21,7 @@ class AppState extends State<App> {
 
   void fetchImage() async {
     counter++;
-
+    print('$counter');
     final response = await get(
         Uri.parse('https://jsonplaceholder.typicode.com/photos/$counter'));
     final imageModel = ImageModel.formJson(json.decode(response.body));
