@@ -3,7 +3,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' show get;
+import 'package:http/http.dart'
+    show
+        get; // show get eklemeyince tum kutuphaneyi ekliyorsun bundan kacinmak lazim
 import 'models/image_model.dart';
 import 'widgets/image_list.dart';
 
@@ -19,18 +21,6 @@ class AppState extends State<App> {
   int counter = 1;
   List<ImageModel> images = [];
 
-  void fetchImage() async {
-    counter++;
-    print('$counter');
-    final response = await get(
-        Uri.parse('https://jsonplaceholder.typicode.com/photos/$counter'));
-    final imageModel = ImageModel.formJson(json.decode(response.body));
-
-    setState(() {
-      images.add(imageModel);
-    });
-  }
-
   @override
   Widget build(context) {
     return MaterialApp(
@@ -41,5 +31,32 @@ class AppState extends State<App> {
               onPressed: fetchImage,
             ),
             appBar: AppBar(title: Text("Let's see some images!"))));
+  }
+
+  void fetchImage() async {
+    print('$counter');
+    final response = await get(
+        Uri.parse('https://jsonplaceholder.typicode.com/photos/$counter'));
+    final imageModel = ImageModel.formJson(json.decode(response.body));
+
+    setState(
+      () {
+        counter++;
+        images.add(
+            imageModel); // we clearly want to see this widget render itself on the screen of our device.
+      },
+    );
+  }
+}
+
+class App2 extends StatelessWidget {
+  Widget build(context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text("Selam Dunyali"),
+        ),
+      ),
+    );
   }
 }
